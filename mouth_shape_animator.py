@@ -60,6 +60,8 @@ def import_mouth_shapes(json_file, image_folder):
                 tex_image = mat.node_tree.nodes.new("ShaderNodeTexImage")
                 tex_image.image = img
                 mat.node_tree.links.new(bsdf.inputs['Base Color'], tex_image.outputs['Color'])
+                mat.node_tree.links.new(bsdf.inputs['Alpha'], tex_image.outputs['Alpha'])
+                
                 plane_obj.data.materials.append(mat)
                 
                 # Add the plane to the "mouth_shapes" container
