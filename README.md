@@ -19,6 +19,8 @@ Watch this video: https://www.youtube.com/watch?v=r3MXjtBPEGY
 
 Essentionly you need a folder (somewhere) of mouth shaps (A..H,X), with transparent backgrounds of course.
 
+![Alt text](/figures/mouth_shapes.png "Example mouth shapes, scratch out your'e own by all means")
+
 Then once the images are set up, they'll have actions assigned (AACTION..HACTION,XACTION), and you simply use the drop downs to select the automatically created action.
 
 ![Alt text](/figures/action_assignment.png "The auto-generated actions post assignment")
