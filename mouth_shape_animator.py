@@ -121,8 +121,11 @@ class ImportMouthShapesOperator(bpy.types.Operator):
             return {'CANCELLED'}
 
         # Clear existing objects in the scene
-        bpy.ops.object.select_all(action='SELECT')
-        bpy.ops.object.delete(use_global=False)
+        if "Mouth_Shapes" in bpy.data.collections:
+            mouth_shapes_container = bpy.data.collections["Mouth_Shapes"]
+            for obj in list(mouth_shapes_container.objects):
+            bpy.data.objects.remove(obj, do_unlink=True)
+            bpy.data.collections.remove(mouth_shapes_container)
 
         # Scan the image folder and create planes
         
