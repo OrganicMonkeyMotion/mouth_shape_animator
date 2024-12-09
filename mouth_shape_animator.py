@@ -102,6 +102,18 @@ def import_mouth_shapes(json_file, image_folder):
 
 # --- OPERATOR ---
 
+def clear_mouth_shapes():
+    if "Mouth_Shapes" in bpy.data.collections:
+        mouth_shapes_container = bpy.data.collections["Mouth_Shapes"]
+
+        # Remove all objects in the Mouth_Shapes collection
+        for obj in list(mouth_shapes_container.objects):
+            bpy.data.objects.remove(obj, do_unlink=True)
+
+        # Unlink and remove the collection itself
+        bpy.context.scene.collection.children.unlink(mouth_shapes_container)
+        bpy.data.collections.remove(mouth_shapes_container)
+
 class ImportMouthShapesOperator(bpy.types.Operator):
     bl_idname = "object.import_mouth_shapes"
     bl_label = "Import Mouth Shapes"
@@ -121,11 +133,7 @@ class ImportMouthShapesOperator(bpy.types.Operator):
             return {'CANCELLED'}
 
         # Clear existing objects in the scene
-        if "Mouth_Shapes" in bpy.data.collections:
-            mouth_shapes_container = bpy.data.collections["Mouth_Shapes"]
-            for obj in list(mouth_shapes_container.objects):
-            bpy.data.objects.remove(obj, do_unlink=True)
-            bpy.data.collections.remove(mouth_shapes_container)
+        clear_mouth_shapes()
 
         # Scan the image folder and create planes
         
